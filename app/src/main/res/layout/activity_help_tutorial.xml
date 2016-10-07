@@ -45,7 +45,7 @@
             android:textSize="18sp"
             android:layout_weight="0.25" />
 
-        <com.original.dingke.view.CirclePageIndicator
+        <com.orangemoo.com.beta.adapter.CirclePageIndicator
             android:id="@+id/activity_help_view_page_indicator"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
