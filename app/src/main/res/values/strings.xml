@@ -192,4 +192,13 @@
     <string name="title_activity_material_tutorial">MaterialTutorialActivity</string>
     <string name="navigation_drawer_open">drawopen</string>
     <string name="navigation_drawer_close">drawclose</string>
+
+    <string name="slide_1_african_story_books">A new one</string>
+    <string name="slide_2_volunteer_professionals">Choose what you love really</string>
+    <string name="slide_3_download_and_go">Unbelieveble creative</string>
+    <string name="slide_4_different_languages">Make you impressive</string>
+    <string name="slide_1_african_story_books_subtitle">Move you on and better.</string>
+    <string name="slide_2_volunteer_professionals_subtitle">A good way to communication.</string>
+    <string name="slide_3_download_and_go_subtitle">Revolution change you and her.</string>
+    <string name="slide_4_different_languages_subtitle">And more!</string>
 </resources>
