@@ -31,10 +31,7 @@ public class PeopleListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             R.mipmap.test14,
             R.mipmap.test15,
             R.mipmap.test16,
-            R.mipmap.test17,
-            R.mipmap.test18,
-            R.mipmap.test20,
-            R.mipmap.test21
+            R.mipmap.test17
     };
 
 

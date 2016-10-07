@@ -6,16 +6,16 @@ import android.util.Log;
  * Created by zengjinlong on 15-10-30.
  */
 public class LogUtil {
-    private static final String TEST_TAG = "yltest";
+    private static final String TEST_TAG = "omTest";
     public static void d(String tag, String msg) {
         if (Utils.DEBUG) {
-            Log.e(tag, msg);
+            Log.d(tag, msg);
         }
     }
 
     public static void d(String msg) {
         if (Utils.DEBUG) {
-            Log.e(TEST_TAG, msg);
+            Log.d(TEST_TAG, msg);
         }
     }
 

@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="15dp"
-                android:text="SHARE"
+                android:text="AUTHOR"
                 android:textAppearance="@style/BlogItemTextButtonStyle" />
 
             <TextView
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="LEARN MORE"
+                android:text="DATE"
                 android:textAppearance="@style/BlogItemTextButtonStyle" />
 
         </LinearLayout>
