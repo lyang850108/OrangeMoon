@@ -1,4 +1,4 @@
-package com.orangemoo.com.beta.utils;
+package com.orangemoo.com.beta.util;
 
 import android.content.Context;
 

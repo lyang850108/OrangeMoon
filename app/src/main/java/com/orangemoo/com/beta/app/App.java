@@ -12,7 +12,7 @@ import com.orangemoo.com.beta.BuildConfig;
 import com.orangemoo.com.beta.network.RetrofitService;
 import com.orangemoo.com.beta.util.LogUtil;
 import com.orangemoo.com.beta.util.PreferenceUtils;
-import com.orangemoo.com.beta.utils.LiteOrmDBUtil;
+import com.orangemoo.com.beta.util.LiteOrmDBUtil;
 import com.orangemoo.com.beta.utils.SharedPreferencesHelper;
 import com.squareup.okhttp.OkHttpClient;
 

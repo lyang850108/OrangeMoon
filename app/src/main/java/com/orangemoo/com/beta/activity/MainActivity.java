@@ -1,5 +1,6 @@
 package com.orangemoo.com.beta.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -198,9 +199,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
+            Intent intentForSetting = new Intent(this, SettingActivity.class);
+            startActivity(intentForSetting);
 
         } else if (id == R.id.nav_send) {
-
+            Intent intentForLoginning = new Intent(this, LoginActivity.class);
+            startActivity(intentForLoginning);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
