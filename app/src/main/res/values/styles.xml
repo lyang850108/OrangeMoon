@@ -9,9 +9,9 @@
     </style>
     <!-- Base application theme. -->
     <style name="Theme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-        <!--<item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorPrimaryDark">#ffab40</item>-->
+        <!--<item_right name="colorPrimary">@color/colorPrimary</item_right>
+        <item_right name="colorAccent">@color/colorAccent</item_right>
+        <item_right name="colorPrimaryDark">#ffab40</item_right>-->
     </style>
 
     <style name="navigation_bottom_radio">

@@ -1,5 +1,6 @@
 package com.orangemoo.com.beta.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.orangemoo.com.beta.R;
+import com.orangemoo.com.beta.activity.RecyclerViewActivity;
 import com.orangemoo.com.beta.adapter.PeopleListAdapter;
 
 import butterknife.Bind;
@@ -114,7 +116,8 @@ public class PeopleFragment extends BaseFragment {
         mPeopleListAdapter.setOnItemClickListener(new PeopleListAdapter.OnItemClickListener() {
             @Override
             public void onItemClicked(View view, int postion) {
-
+                Intent intent = new Intent(getContext(), RecyclerViewActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -171,10 +174,10 @@ public class PeopleFragment extends BaseFragment {
             *//*if (mNewPrograms != null && mNewPrograms.size() > 0) {
                 if (mLoadType == LOAD_NEW && mDatas.size() > 0) {
                     int oldFirstId = mDatas.get(0).id;
-                    for (ProgramItem item : mNewPrograms) {
-                        if (item.id < oldFirstId) {
+                    for (ProgramItem item_right : mNewPrograms) {
+                        if (item_right.id < oldFirstId) {
                             // add new items at head
-                            mDatas.add(0, item);
+                            mDatas.add(0, item_right);
                             mLoadIndex++;
                         }
                     }

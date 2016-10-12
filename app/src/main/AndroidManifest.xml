@@ -51,6 +51,10 @@
             android:name=".activity.SettingActivity"
             android:label="@string/action_settings"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RecyclerViewActivity"
+            android:label="@string/action_settings"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

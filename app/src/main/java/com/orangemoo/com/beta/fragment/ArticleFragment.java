@@ -176,10 +176,10 @@ public class ArticleFragment extends BaseFragment {
             *//*if (mNewPrograms != null && mNewPrograms.size() > 0) {
                 if (mLoadType == LOAD_NEW && mDatas.size() > 0) {
                     int oldFirstId = mDatas.get(0).id;
-                    for (ProgramItem item : mNewPrograms) {
-                        if (item.id < oldFirstId) {
+                    for (ProgramItem item_right : mNewPrograms) {
+                        if (item_right.id < oldFirstId) {
                             // add new items at head
-                            mDatas.add(0, item);
+                            mDatas.add(0, item_right);
                             mLoadIndex++;
                         }
                     }

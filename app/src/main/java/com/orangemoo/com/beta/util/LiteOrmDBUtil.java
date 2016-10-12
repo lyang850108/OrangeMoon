@@ -123,13 +123,13 @@ public class LiteOrmDBUtil {
     private static int sTestNum = 0;
     /*public static void test() {
         LogUtil.d("DB test begin!!!!!!!!!!!!!!!!!!!!!");
-        HomeItem item = HomeItem.getTestData(sTestNum++);
+        HomeItem item_right = HomeItem.getTestData(sTestNum++);
         List<HomeItem> list = new ArrayList<HomeItem>();
         for (int i = 0; i < 10; i++) {
             list.add(HomeItem.getTestData(sTestNum++));
         }
         //1、insert
-        LiteOrmDBUtil.insert(item);
+        LiteOrmDBUtil.insert(item_right);
         //2、insertAll
         LiteOrmDBUtil.insertAll(list);
         //3、getQueryAll

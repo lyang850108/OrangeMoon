@@ -17,7 +17,7 @@ import com.orangemoo.com.beta.R;
 
 /**
  * @author zengjinlong
- * this is the common layout for view item like below:
+ * this is the common layout for view item_right like below:
  * ______________________________________
  * |                                     |
  * |         CONTENT                     |
