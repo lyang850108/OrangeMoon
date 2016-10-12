@@ -9,8 +9,17 @@
         android:layout_height="200dp"
         android:id="@+id/imageView"
         android:layout_gravity="center_horizontal"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="140dp"
         android:scaleType="fitCenter"
         android:layout_centerHorizontal="true"
-        android:src="@mipmap/bookdash_icon"/>
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/BlogTitleStyle"
+        android:text="Les is More"
+        />
 </RelativeLayout>
