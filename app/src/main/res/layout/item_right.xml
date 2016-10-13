@@ -11,33 +11,55 @@
         android:layout_height="wrap_content"
         android:gravity="right"
         android:orientation="vertical"
-        android:padding="2dp"
+        android:padding="5dp"
         >
 
-        <ImageView
-            android:layout_width="270dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/person_photo"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="16dp"
-            />
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/date_name"
+                android:layout_gravity="center_vertical"
+                android:text="09-10-20"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginRight="@dimen/default_date_margin"
+                android:textAppearance="@style/BlogItemTextButtonStyle"
+                />
+
+            <ImageView
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/person_photo"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                />
+
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/person_name"
-            android:layout_marginTop="-10dp"
+            android:padding="@dimen/detail_people_name_margin"
             android:textSize="15sp"
+            android:gravity="right"
             android:textStyle="bold"
             />
 
-        <TextView
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/person_age"
             android:textAppearance="@style/BlogItemTextButtonStyle"
-            />
+            />-->
+
 
     </LinearLayout>
 

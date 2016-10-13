@@ -23,14 +23,14 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
 
         CardView cv;
         TextView personName;
-        TextView personAge;
+        //TextView personAge;
         ImageView personPhoto;
 
         PersonViewHolder(View itemView) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cv);
             personName = (TextView)itemView.findViewById(R.id.person_name);
-            personAge = (TextView)itemView.findViewById(R.id.person_age);
+            //personAge = (TextView)itemView.findViewById(R.id.person_age);
             personPhoto = (ImageView)itemView.findViewById(R.id.person_photo);
         }
     }
@@ -78,7 +78,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
     public void onBindViewHolder(PersonViewHolder personViewHolder, int position) {
         if (position > 0) {
             personViewHolder.personName.setText(persons.get(position).name);
-            personViewHolder.personAge.setText(persons.get(position).age);
+            //personViewHolder.personAge.setText(persons.get(position).age);
             personViewHolder.personPhoto.setImageResource(persons.get(position).photoId);
         }
 

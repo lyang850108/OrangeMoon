@@ -4,10 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.orangemoo.com.beta.R;
 import com.orangemoo.com.beta.activity.MainActivity;
 import com.orangemoo.com.beta.activity.MaterialTutorialActivity;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 
 /**
@@ -18,10 +26,31 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
     private static final int SPLASH_SCREEN_REQUEST_CODE = 1;
     private SplashContract.UserActionsListener splashPresenter;
 
+    @Bind(R.id.ic_launch_title)
+    ImageView imageView;
+
+    @Bind(R.id.tx_launch_title)
+    TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        ButterKnife.bind(this);
+
+        Animation operatingAnim = AnimationUtils.loadAnimation(this, R.anim.luancher_img_repeat);
+        imageView.setAnimation(operatingAnim);
+        operatingAnim.start();
+
+        /*TranslateAnimation alphaAnimation2 = new TranslateAnimation(0, 0, 0,
+                -70);
+        alphaAnimation2.setDuration(800);
+        alphaAnimation2.setRepeatCount(3);
+        alphaAnimation2.setRepeatMode(Animation.REVERSE);
+        textView.setAnimation(alphaAnimation2);
+        alphaAnimation2.start();*/
+
         splashPresenter = new SplashPresenter(this);
         showSplashAfterDelay();
     }
@@ -32,7 +61,7 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
             public void run() {
                 splashPresenter.loadSplash();
             }
-        }, 1000);
+        }, 3500);
 
     }
 
