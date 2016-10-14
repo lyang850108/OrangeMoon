@@ -225,11 +225,11 @@
     <string name="bind">绑定</string>
     <string name="save">保存</string>
     <string name="save_successful">保存成功</string>
-    <string name="pref_title_social_recommendations">自动连接</string>
-    <string name="pref_description_social_recommendations">打开此选项，设备靠近时会自动连接
+    <string name="pref_title_social_recommendations">推送消息</string>
+    <string name="pref_description_social_recommendations">打开此选项，可主动推送热门话题
     </string>
 
-    <string name="pref_title_display_name">设备地址</string>
+    <string name="pref_title_display_name">清理存储空间</string>
     <string name="upgrade_version">版本升级</string>
     <string name="defaultt_version_description">请点击确定升级到最新的版本</string>
     <string name="upgrade_info_get_error">获取服务器更新信息失败</string>
