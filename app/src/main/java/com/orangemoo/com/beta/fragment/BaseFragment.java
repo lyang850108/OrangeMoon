@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.orangemoo.com.beta.R;
+import com.orangemoo.com.beta.util.LogUtil;
 import com.orangemoo.com.beta.widget.ListenableListView;
 
 
@@ -18,6 +19,7 @@ import com.orangemoo.com.beta.widget.ListenableListView;
 public class BaseFragment extends Fragment {
 
     protected Activity mActivity;
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     public void onAttach(Activity activity) {
@@ -28,6 +30,7 @@ public class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) mActivity.findViewById(R.id.swipe_refresh_layout);
     }
 
 
@@ -53,9 +56,9 @@ public class BaseFragment extends Fragment {
             super.onScrolled(recyclerView, dx, dy);
             mScrolledY += dy;
             if (mScrolledY > 0) {
-                //setSwipeEnable(false);
+                setSwipeEnable(false);
             } else {
-                //setSwipeEnable(true);
+                setSwipeEnable(true);
             }
         }
     };
@@ -68,4 +71,17 @@ public class BaseFragment extends Fragment {
         // implement by child who wants handle refresh.
     }
 
+    public void setRefreshing(boolean refreshing) {
+        if (mSwipeRefreshLayout != null) {
+            mSwipeRefreshLayout.setRefreshing(refreshing);
+        }
+    }
+    public void setSwipeEnable(boolean enable) {
+        mSwipeRefreshLayout.setEnabled(enable);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 }

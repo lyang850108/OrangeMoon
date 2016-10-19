@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import com.orangemoo.com.beta.R;
 import com.orangemoo.com.beta.adapter.ArticleListAdapter;
+import com.orangemoo.com.beta.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,7 @@ public class ArticleFragment extends BaseFragment {
         ButterKnife.bind(this, mView);
         initView();
         mBlogHandler = new BlogHandler();
+
         return mView;
     }
 
@@ -72,6 +74,8 @@ public class ArticleFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        //stop refreshing
+        setRefreshing(false);
     }
 
     @Override

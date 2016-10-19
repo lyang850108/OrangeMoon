@@ -12,6 +12,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +25,8 @@ import com.orangemoo.com.beta.R;
 import com.orangemoo.com.beta.fragment.ArticleFragment;
 import com.orangemoo.com.beta.fragment.BaseFragment;
 import com.orangemoo.com.beta.fragment.PeopleFragment;
+import com.orangemoo.com.beta.util.LogUtil;
+import com.orangemoo.com.beta.util.PreferenceUtils;
 import com.orangemoo.com.beta.widget.ListenableListView;
 import com.orangemoo.com.beta.widget.ViewPagerTabs;
 
@@ -42,6 +45,9 @@ public class MainActivity extends AppCompatActivity
 
     @Bind(R.id.pager_tabs)
     ViewPagerTabs mViewPagerTabs;
+
+    @Bind(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout mSwipRefreshLayout;
 
     PagerAdapter mPagerAdapter;
     private String[] mTabTitles;
@@ -88,6 +94,24 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //Init mSwipRefreshLayout view
+        mSwipRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mCurrentFragment.onRefresh();
+            }
+        });
+        mSwipRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.ae_theme_color));
+        if (PreferenceUtils.isFirstLaunch(this)) {
+            Snackbar.make(mSwipRefreshLayout, R.string.tip_pull_to_refresh, Snackbar.LENGTH_INDEFINITE)
+                    .setAction(R.string.tip_ok, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    }).show();
+        }
     }
 
     private void initViewTabs() {
