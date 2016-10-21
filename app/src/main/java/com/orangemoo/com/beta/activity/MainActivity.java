@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,13 +18,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
 
 import com.orangemoo.com.beta.R;
 import com.orangemoo.com.beta.fragment.ArticleFragment;
-import com.orangemoo.com.beta.fragment.BaseFragment;
+import com.orangemoo.com.beta.fragment.ContentFragment;
 import com.orangemoo.com.beta.fragment.PeopleFragment;
-import com.orangemoo.com.beta.util.LogUtil;
+import com.orangemoo.com.beta.fragment.PersonFragment;
+import com.orangemoo.com.beta.fragment.SwipeRefreshFragment;
 import com.orangemoo.com.beta.util.PreferenceUtils;
 import com.orangemoo.com.beta.widget.ListenableListView;
 import com.orangemoo.com.beta.widget.ViewPagerTabs;
@@ -46,17 +45,18 @@ public class MainActivity extends AppCompatActivity
     @Bind(R.id.pager_tabs)
     ViewPagerTabs mViewPagerTabs;
 
-    @Bind(R.id.swipe_refresh_layout)
-    SwipeRefreshLayout mSwipRefreshLayout;
-
     PagerAdapter mPagerAdapter;
     private String[] mTabTitles;
-    BaseFragment mCurrentFragment;
+    SwipeRefreshFragment mCurrentFragment;
 
     public static final int FRAGMENT_TAG_INTRO = 0;
     public static final int FRAGMENT_TAG_DETAIL = 1;
     public static final int FRAGMENT_TAG_PRICE = 2;
     public static final int FRAGMENT_TAG_FAQ = 3;
+
+    public static final int FRAGMENT_TAG_CONTENT = 0;
+    public static final int FRAGMENT_TAG_PERSON = 1;
+
 
     ListenableListView.OnListScrollListener mOnListScrollListener = new ListenableListView.OnListScrollListener() {
         @Override
@@ -95,23 +95,6 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //Init mSwipRefreshLayout view
-        mSwipRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mCurrentFragment.onRefresh();
-            }
-        });
-        mSwipRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.ae_theme_color));
-        if (PreferenceUtils.isFirstLaunch(this)) {
-            Snackbar.make(mSwipRefreshLayout, R.string.tip_pull_to_refresh, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(R.string.tip_ok, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                        }
-                    }).show();
-        }
     }
 
     private void initViewTabs() {
@@ -126,7 +109,7 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onPageSelected(int position) {
-                mCurrentFragment = (BaseFragment) mPagerAdapter.getItem(position);
+                mCurrentFragment = (SwipeRefreshFragment) mPagerAdapter.getItem(position);
 
                 mViewPagerTabs.onPageSelected(position);
             }
@@ -137,12 +120,12 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        BaseFragment fragmentMain1 = new ArticleFragment();
-        BaseFragment fragment2 = new PeopleFragment();
-        fragment2.setTag(FRAGMENT_TAG_DETAIL);
+        SwipeRefreshFragment fragmentMain1 = ContentFragment.newInstance(FRAGMENT_TAG_CONTENT);
+        SwipeRefreshFragment fragment2 = PersonFragment.newInstance(FRAGMENT_TAG_PERSON);
+        //fragment2.setTag(FRAGMENT_TAG_DETAIL);
 
         mCurrentFragment = fragmentMain1;
-        mCurrentFragment.setListScrollListener(mOnListScrollListener);
+        //mCurrentFragment.setListScrollListener(mOnListScrollListener);
         mPagerAdapter = new PagerAdapter(getSupportFragmentManager(),
                 fragmentMain1, fragment2);
         mViewPager.setAdapter(mPagerAdapter);

@@ -1,7 +1,5 @@
 package com.orangemoo.com.beta.fragment;
 
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,10 +12,6 @@ import android.widget.ImageView;
 
 import com.orangemoo.com.beta.R;
 import com.orangemoo.com.beta.adapter.ArticleListAdapter;
-import com.orangemoo.com.beta.util.LogUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
