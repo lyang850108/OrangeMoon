@@ -56,9 +56,9 @@ public class BaseFragment extends Fragment {
             super.onScrolled(recyclerView, dx, dy);
             mScrolledY += dy;
             if (mScrolledY > 0) {
-                setSwipeEnable(false);
+                //setSwipeEnable(false);
             } else {
-                setSwipeEnable(true);
+                //setSwipeEnable(true);
             }
         }
     };
@@ -70,7 +70,7 @@ public class BaseFragment extends Fragment {
     public void onRefresh() {
         // implement by child who wants handle refresh.
     }
-
+/*
     public void setRefreshing(boolean refreshing) {
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setRefreshing(refreshing);
@@ -83,5 +83,5 @@ public class BaseFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-    }
+    }*/
 }

@@ -21,6 +21,7 @@ import android.view.View;
 
 import com.orangemoo.com.beta.R;
 import com.orangemoo.com.beta.fragment.ArticleFragment;
+import com.orangemoo.com.beta.fragment.BaseFragment;
 import com.orangemoo.com.beta.fragment.ContentFragment;
 import com.orangemoo.com.beta.fragment.PeopleFragment;
 import com.orangemoo.com.beta.fragment.PersonFragment;
@@ -35,8 +36,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
 
     @Bind(R.id.view_pager)
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
 
     PagerAdapter mPagerAdapter;
     private String[] mTabTitles;
-    SwipeRefreshFragment mCurrentFragment;
+    BaseFragment mCurrentFragment;
 
     public static final int FRAGMENT_TAG_INTRO = 0;
     public static final int FRAGMENT_TAG_DETAIL = 1;
@@ -83,24 +83,24 @@ public class MainActivity extends AppCompatActivity
 
         initViewTabs();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        /*DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
-        /*ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);*/
+        *//*ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);*//*
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);*/
 
     }
 
     private void initViewTabs() {
         ButterKnife.bind(this);
 
-        mTabTitles = new String[] {getString(R.string.tab_title_intro), getString(R.string.tab_title_detail)};
+        mTabTitles = new String[] {getString(R.string.tab_title_intro), getString(R.string.tab_title_detail), getString(R.string.tab_title_price), getString(R.string.tab_title_comment)};
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onPageSelected(int position) {
-                mCurrentFragment = (SwipeRefreshFragment) mPagerAdapter.getItem(position);
+                mCurrentFragment = (BaseFragment) mPagerAdapter.getItem(position);
 
                 mViewPagerTabs.onPageSelected(position);
             }
@@ -120,14 +120,18 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        SwipeRefreshFragment fragmentMain1 = ContentFragment.newInstance(FRAGMENT_TAG_CONTENT);
-        SwipeRefreshFragment fragment2 = PersonFragment.newInstance(FRAGMENT_TAG_PERSON);
-        //fragment2.setTag(FRAGMENT_TAG_DETAIL);
+        /*SwipeRefreshFragment fragment1 = ContentFragment.newInstance(FRAGMENT_TAG_CONTENT);
+        SwipeRefreshFragment fragment2 = PersonFragment.newInstance(FRAGMENT_TAG_PERSON);*/
+        BaseFragment fragment1 = new ArticleFragment();
+        BaseFragment fragment2 = new PeopleFragment();
+        BaseFragment fragment3 = new ArticleFragment();
+        BaseFragment fragment4 = new PeopleFragment();
+        fragment2.setTag(FRAGMENT_TAG_DETAIL);
 
-        mCurrentFragment = fragmentMain1;
-        //mCurrentFragment.setListScrollListener(mOnListScrollListener);
+        mCurrentFragment = fragment1;
+        mCurrentFragment.setListScrollListener(mOnListScrollListener);
         mPagerAdapter = new PagerAdapter(getSupportFragmentManager(),
-                fragmentMain1, fragment2);
+                fragment1, fragment2, fragment3, fragment4);
         mViewPager.setAdapter(mPagerAdapter);
 
         mViewPagerTabs.setViewPager(mViewPager);
@@ -164,16 +168,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
@@ -195,33 +189,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item_right clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-            Intent intentForSetting = new Intent(this, SettingActivity.class);
-            startActivity(intentForSetting);
-
-        } else if (id == R.id.nav_send) {
-            Intent intentForLoginning = new Intent(this, LoginActivity.class);
-            startActivity(intentForLoginning);
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
     @Override
     protected void onDestroy() {

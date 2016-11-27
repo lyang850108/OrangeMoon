@@ -69,7 +69,6 @@ public class ArticleFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         //stop refreshing
-        setRefreshing(false);
     }
 
     @Override

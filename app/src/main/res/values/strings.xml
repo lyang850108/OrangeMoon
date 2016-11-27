@@ -75,10 +75,10 @@
     <string name="weibosdk_demo_toast_obtain_token_success">获取 Token 成功</string>
     <string name="weibosdk_demo_toast_obtain_token_failed">获取 Token 失败</string>
 
-    <string name="tab_title_intro">Article</string>
-    <string name="tab_title_detail">People</string>
-    <string name="tab_title_price">Price</string>
-    <string name="tab_title_comment">Faq</string>
+    <string name="tab_title_intro">全部</string>
+    <string name="tab_title_detail">文章</string>
+    <string name="tab_title_price">音乐</string>
+    <string name="tab_title_comment">视频</string>
 
     <string name="sort">Sort</string>
     <string name="filter">Filter</string>
